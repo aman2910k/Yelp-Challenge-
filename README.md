@@ -1,0 +1,2 @@
+# Yelp-Challenge-
+You have a business that might be doing well. But knowing when you are going to get maximum the crowd or when there is going to be a dry spell is a very important information to know. It prepares the entrepreneur to handle the big crowd during rush hours and alerts the user when should he go to a particular business to avoid a rush. This project will benefit both the user and the customer in shaping their schedule to the business. It will not only save customers’ time but also benefit the business to perform well during the rush hours.
