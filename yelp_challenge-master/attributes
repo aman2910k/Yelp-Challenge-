@@ -1,0 +1,41 @@
+import json
+import os
+
+import pandas as pd
+
+
+def get_attributes(temp, attr):
+    for key, value in temp.items():
+        if value is True:
+            # print(key, value)
+            attr.append(key)
+        if value is type(temp):
+            get_attributes(value, attr)
+    return attr
+
+#displaying the attributes for the business_id where attribute is true. Telling the business that these facilities are given by the nearby businesses.
+id = list()
+id.append(151)
+id.append(200)
+error_text = ""
+attr = list()
+data = pd.read_csv(os.path.join('data', 'biz_csv', 'business_attributes.csv'))
+# print(id)
+j = 1
+while id:
+    biz_data = data.loc[data['business_id'] == id.pop()]
+    # print(biz_data)
+    # print(j)
+    j += 1
+    for i in biz_data.values:
+        i[1] = i[1].replace("\"", "")
+        i[1] = i[1].replace("\'", "\"")
+        # i[1] = i[1].replace("True", "\"True\"")
+        # i[1] = i[1].replace("False", "\"False\"")
+        i[1] = i[1].replace("True", "true")
+        i[1] = i[1].replace("False", "false")
+        # error_text = i[1]
+        temp = json.loads(str(i[1]))
+        # print(temp)
+        print(get_attributes(temp, attr))
+        attr = list()
